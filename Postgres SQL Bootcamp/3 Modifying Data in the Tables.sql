@@ -61,13 +61,58 @@ WHERE customer_id = 7;
 
 -- Updating a row and returning the updated row
 
+UPDATE customers 
+SET 
+email = 'pratik@gmail.com'
+WHERE customer_id = 6
+RETURNING *;
+
 
 -- Updating all records in a table
+
+UPDATE customers 
+SET is_enable = 'Y';
 
 
 -- Delete data from a table
 
+DELETE FROM customers 
+WHERE customer_id = 5;
+
+
+SELECT * FROM customers;
+
 
 -- Using UPSERT
 
-SELECT * FROM customers;
+CREATE TABLE t_tags(
+	id SERIAL PRIMARY KEY,
+	tag text UNIQUE,
+	update_date TIMESTAMP DEFAULT NOW()
+);
+
+INSERT INTO t_tags (tag) values
+('Pen'),
+('Pencil');
+
+
+SELECT * FROM t_tags;
+
+
+INSERT INTO t_tags (tag) 
+VALUES ('Pen')
+ON CONFLICT (tag) 
+DO 
+	NOTHING;
+
+
+SELECT * FROM t_tags;
+
+
+INSERT INTO t_tags (tag) 
+VALUES ('Pen1')
+ON CONFLICT (tag) 
+DO 
+	UPDATE SET
+		-- tag = EXCLUDED.tag || '1',
+		update_date = NOW();
