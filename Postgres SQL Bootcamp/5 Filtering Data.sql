@@ -451,7 +451,7 @@ WHERE
 
 
 
--- Concatenation techinques
+-- Concatenation techniques
 -- Concatenation with ||, CONCAT and CONCAT_WS
 
 -- concate first name and last name as actor name
