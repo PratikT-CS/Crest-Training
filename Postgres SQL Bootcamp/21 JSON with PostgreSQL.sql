@@ -275,3 +275,12 @@ FROM contacts_docs
 WHERE
 	body @>'{"first_name" : "John"}'
 ;
+
+
+
+SELECT 
+	jsonb_array_elements(body->'movies') AS skill,
+	body->>'director_id'
+FROM 
+	director_docs
+;
