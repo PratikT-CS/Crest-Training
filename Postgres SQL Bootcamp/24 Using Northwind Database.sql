@@ -148,12 +148,17 @@ ORDER BY
 ;
 
 
-SELECT DISTINCT country
-FROM customers
+SELECT 
+	DISTINCT country
+FROM 
+	customers
 UNION ALL
-SELECT DISTINCT country
-FROM suppliers
-ORDER BY country;
+SELECT 
+	DISTINCT country
+FROM 
+	suppliers
+ORDER BY 
+	country;
 
 
 
