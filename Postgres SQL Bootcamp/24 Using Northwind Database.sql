@@ -130,6 +130,119 @@ ORDER BY 2 DESC
 ;
 
 
+-- COUNTRIES WITH CUSTOMERS OR SUPPLIERS
+
+-- WITH UNION
+
+SELECT 
+	country
+FROM 
+	customers
+UNION
+SELECT 
+	country
+FROM 
+	suppliers
+ORDER BY 
+	country
+;
+
+
+SELECT DISTINCT country
+FROM customers
+UNION ALL
+SELECT DISTINCT country
+FROM suppliers
+ORDER BY country;
+
+
+
+-- WITH CTE
+
+WITH countries_customers AS
+(
+	SELECT 
+		DISTINCT country
+	FROM 
+		customers
+),
+countries_suppliers AS
+(
+	SELECT 
+		DISTINCT country
+	FROM 
+		suppliers
+)
+SELECT 
+	cc.country AS "Customers Countries",
+	cs.country AS "Suppliers Countries"
+FROM 
+	countries_customers AS cc
+FULL JOIN 
+	countries_suppliers AS cs USING (country)
+;
+
+
+-- CUSTOMERS WITH MULTIPLE ORDERS
+
+WITH next_order_date AS
+(
+	SELECT 
+		customer_id, 
+		order_date,
+		LEAD(order_date, 1) 
+			OVER (PARTITION BY customer_id 
+			ORDER BY customer_id, order_date) 
+			AS next_order_date
+	FROM 
+		orders
+)
+SELECT 
+	customer_id, 
+	order_date, 
+	next_order_date,
+	(next_order_date - order_date) AS days_between_orders
+FROM 
+	next_order_date
+WHERE 
+	(next_order_date - order_date) <= 4
+;
+
+
+-- FIRST ORDER FROM EACH COUNTRY
+
+SELECT 
+	ship_country, 
+	MIN(order_date) AS "First Order"
+FROM 
+	orders
+GROUP BY 
+	ship_country
+;
+
+
+WITH orders_by_country AS
+(
+	SELECT 
+		ship_country, 
+		order_id, 
+		order_date,
+		ROW_NUMBER() 
+			OVER (PARTITION BY ship_country 
+				ORDER BY ship_country, order_date) 
+				AS country_row_number
+	FROM 
+		orders
+)
+SELECT 		
+	ship_country, 
+	order_id, 
+	order_date
+FROM 
+	orders_by_country
+WHERE 
+	country_row_number = 1
+;
 
 
 
