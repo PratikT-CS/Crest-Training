@@ -1,0 +1,295 @@
+API for College Management System (CMS)
+
+API Overview
+
+Title: OpenAPI Specification for CMS
+Description: API Specification document of the CMS system
+Contact: Pratik Talaviya (contact-info/email/etc)
+Version: 1.0
+
+
+API Type: Public
+
+
+Server base URL: http://localhost:44333/api
+
+
+Students
+
+
+Student Model
+Student Id: int
+First Name: string
+Last Name: string
+Phone Number: string
+Address: string
+
+
+Student Model
+Student Id: int (IDENTIFIER)
+First Name: string
+Last Name: string
+Phone Number: string
+Address: string
+
+
+GET /api/v1/students
+
+	Content-Type: application/json
+	Requests:
+		Query parameters (optional):
+		phoneNumber
+			- Support for Filtering.
+			- Filter the results by phone number.
+			- Example: api/students?phoneNumber=1234567890
+			
+		page
+			- Support for Pagination.
+			- Page number of the result to fetch.
+			- Example: api/students?page=1&size=4
+			
+		size
+			- Support for Pagination.
+			- Page size of each result.
+			- Example: api/students?page=1&size=4
+			
+		sortBy
+			- Support for Sorting.
+			- The field name to sort the results on.
+			- Example: api/students?sortBy=firstName
+		
+		Path parameters:
+		courseId - Unique Course ID of the course model (applicable for individual items).
+		studentId - Unique Student ID of the student model (applicable for individual items).
+
+		Header:
+		None
+		
+		Cookie:
+		None
+		
+		Request Body:
+		None
+		
+	Responses:
+		HTTP 200 OK
+		Response Body:
+		[
+			{
+				"studentId": Unique ID of a student in the system
+				"firstName": First Name of the student
+				"lastName": Last Name of the student
+				"phoneNumber": Contact Number of the student,
+				"address": Address of the student
+			}
+		]
+		Example:
+		[
+			{
+				"studentId": 1,
+				"firstName": "A",
+				"lastName": "B",
+				"phoneNumber": "1234567890",
+				"address": "24, abc, xyz street, pqr"
+			},
+			{
+				"studentId": 1,
+				"firstName": "A",
+				"lastName": "B",
+				"phoneNumber": "1234567890",
+				"address": "24, abc, xyz street, pqr"
+			}
+		]
+
+
+POST /api/v1/students
+
+	Content-Type: application/json
+	Requests:
+		Request Body:
+		{
+			"studentId"
+			"firstName"
+			"lastName"
+			"phoneNumber"
+			"address"
+		}
+		Example:
+		{
+			"studentId": 1,
+			"firstName": "A",
+			"lastName": "B",
+			"phoneNumber": "1234567890",
+			"address": "24, abc, xyz street, pqr"
+		}
+		
+	Responses:
+		HTTP 201 CREATED
+		Response Body:
+		{
+			"studentId": Unique ID of a student in the system
+			"firstName": First Name of the student
+			"lastName": Last Name of the student
+			"phoneNumber": Contact Number of the student,
+			"address": Address of the student
+		}
+		Example:
+		{
+			"studentId": 1,
+			"firstName": "A",
+			"lastName": "B",
+			"phoneNumber": "1234567890",
+			"address": "24, abc, xyz street, pqr"
+		}
+		
+		HTTP 400 BAD REQUEST
+		Response Body:
+		{
+			"error":
+			{
+				"code": Unique error code for your project
+				"message": Useful message for developers to identify the issue
+			}
+		}
+		Example:
+		{
+			"error":
+			{
+				"code": "INVALID_INPUT",
+				"message": "One or more input arguments are invalid",
+			}
+		}
+
+
+GET api/v1/students/{studentId}
+
+	Content-Type: application/json
+	Requests:
+		Request Body:
+		None
+		
+	Responses:
+		HTTP 200 OK
+		Response Body:
+		{
+			"studentId": Unique ID of a student in the system
+			"firstName": First Name of the student
+			"lastName": Last Name of the student
+			"phoneNumber": Contact Number of the student,
+			"address": Address of the student
+		}
+		Example:
+		{
+			"studentId": 1,
+			"firstName": "A",
+			"lastName": "B",
+			"phoneNumber": "1234567890",
+			"address": "24, abc, xyz street, pqr"
+		}
+			
+		HTTP 404 NOT FOUND
+		Response Body:
+		{
+			"error":
+			{
+				"code": Unique error code for your project
+				"message": Useful message for developers to identify the issue
+			}
+		}
+		Example:
+		{
+			"error":
+			{
+				"code": "INVALID_INPUT",
+				"message": "One or more input arguments are invalid",
+			}
+		}
+
+
+PUT api/v1/students/{studentId}
+
+	Content-Type: application/json
+	Requests:
+		Request Body:
+		{
+			"studentId"
+			"firstName"
+			"lastName"
+			"phoneNumber"
+			"address"
+		}
+		Example:
+		{
+			"studentId": 1,
+			"firstName": "A",
+			"lastName": "B",
+			"phoneNumber": "1234567890",
+			"address": "24, abc, xyz street, pqr"
+		}
+		
+	Responses:
+		HTTP 200 OK
+		Response Body:
+		{
+			"studentId": Unique ID of a student in the system
+			"firstName": First Name of the student
+			"lastName": Last Name of the student
+			"phoneNumber": Contact Number of the student,
+			"address": Address of the student
+		}
+		Example:
+		{
+			"studentId": 1,
+			"firstName": "A",
+			"lastName": "B",
+			"phoneNumber": "1234567890",
+			"address": "24, abc, xyz street, pqr"
+		}
+		
+		HTTP 404 NOT FOUND
+		Response Body:
+		{
+			"error":
+			{
+				"code": Unique error code for your project
+				"message": Useful message for developers to identify the issue
+			}
+		}
+		Example:
+		{
+			"error":
+			{
+				"code": "INVALID_INPUT",
+				"message": "One or more input arguments are invalid",
+			}
+		}
+
+
+DELETE api/v1/students/{studentId}
+
+	Content-Type: application/json
+	Requests:
+		Request Body:
+		None
+		
+	Responses:
+		HTTP 204 NO CONTENT
+		None
+		
+		HTTP 404 NOT FOUND
+		Response Body:
+		{
+			"error":
+			{
+				"code": Unique error code for your project
+				"message": Useful message for developers to identify the issue
+			}
+		}
+		Example:
+		{
+			"error":
+			{
+				"code": "INVALID_INPUT",
+				"message": "One or more input arguments are invalid",
+			}
+		}
