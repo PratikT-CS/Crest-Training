@@ -1,0 +1,35 @@
+Notes on Generative AI
+
+- Foundation Models(FM) : Pre-trained Deep learning models used for generative ai trained on very large amount of data
+
+- Amazon Bedrock : foundation models service provider
+
+- Prompt Engineering 
+
+- Behind the working of FM like LLMs:
+	-Token
+	-Vectors
+	-Embedding
+	-Transformer Model
+
+
+- Transform Architecture : DL models (Nueral Network) architecture which forms/process data together (parallelizable)
+	-Encoder Only (M5 of Amazon used for amazon product search)
+	-Encoder-Decoder 
+	-Decoder Only
+
+- Selection of FMs
+
+- Feeding own data to FMs
+- Ways to customize FMs
+	-Reuse
+	-Adapt
+		-Retrival-Augmented Generation(RAG)
+		-Model Customization
+	-Build New
+
+- Amazon SageMaker : Service used for model customization like RAG
+
+- Amazon Q : AI Powered Assistant for Businesses and Developer
+
+-
