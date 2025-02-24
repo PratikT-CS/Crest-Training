@@ -32,4 +32,4 @@ Notes on Generative AI
 
 - Amazon Q : AI Powered Assistant for Businesses and Developer
 
--
+- Guardrails is the used to safeguard the input(prompt) and output(response) by removing unwanted things.

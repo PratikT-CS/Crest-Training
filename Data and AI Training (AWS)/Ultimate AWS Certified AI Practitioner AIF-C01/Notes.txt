@@ -1,0 +1,69 @@
+- Foundation Models (FMs)
+	- Meta and Google Open Source
+	- OpenAI, Antropic, etc paid ones
+
+- Large Language Models (LLMs)
+	- FMs for text generation like chatgpt
+
+- Diffusion Models are used for image based generation
+	- Forward Diffusion in which model keep adding noise to image for understanding what is in image
+	- Reverse Diffusion noise image with prompt keep own reducing noise and image is generated at last
+
+
+-- Amazone Bedrock
+
+- OpenAI's FMs are not available in Amazon Bedrock
+
+- Bedrock create copy of the FMs which will just used by us
+
+- We can fine tune those FMs just with our knowledge bases and data for specific responses
+
+- Multimodel which take and produces varies type of input and output
+
+- Amazons high performance FM is Amazone Titan
+
+- Throughput : Number of tasks processed per second (higher is better).
+
+- Latency : Time taken to process one task (lower is better).
+
+- Parameters : Parameters are the learnable weights of a machine learning model. These values change during training as the model learns patterns in the data.
+
+- Hyperparameters : A hyperparameter is a configuration setting chosen before training that affects how the model learns.
+
+- Analogy: 
+	If a neural network is a car, parameters (weights, biases) are like the engine components that run automatically, while hyperparameters are like the fuel type, tire pressure, or engine tuning that you set before driving.
+	
+	Hyperparameters = Cooking Recipe (set before cooking).
+	Parameters = Taste (adjusted as you cook).
+
+
+-- Fine Tuning
+
+- Instruction Based : labeled examples of prompt-response pairs 
+	Single Turn Messaging and Multi Turn Messaging are converstion based labeled data used for chatbot training
+
+- Continued Pre-training : Use unlabeled data 
+
+- RAG (Retrival Augment Generation)
+
+- Vector DB services in AWS Aurora and OpenSearch Service
+
+
+-- Prompt Engineering
+
+- Enhanced Prompting : Providing enhanced prompt with all the information to the FMs
+	- Instruction
+	- Context
+	- Input
+	- Output
+
+- Negative Prompting : we specify in prompt what we don't want as response(output).
+	same as enhanced prompting but also include what you don't want in instruction and output.
+
+- Zero Shot Prompting
+- Few Shots Prompting
+- One or Single Shot Prompting
+- Chain of Thought Prompting
+
+
+-- Amazon Q 
