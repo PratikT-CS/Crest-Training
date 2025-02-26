@@ -67,3 +67,9 @@
 
 
 -- Amazon Q 
+
+-- Amazon Comperhand
+-- Amazon Translate
+-- Amazon Transcribe
+	- Uses ASR (Automatic Speech recognition)
+	- Radaction is used to remove PII (Personal Identifiable Information)
